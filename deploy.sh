@@ -1,5 +1,5 @@
 #!/bin/bash
-set -exv # exit with nonzero exit code if anything fails
+set -e # exit with nonzero exit code if anything fails
 
 rm -rf .git
 git init
