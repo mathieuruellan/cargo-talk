@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- 0.1
+before_script:
+- npm install -g grunt-cli
+script: bash -xve ./deploy.sh
+env:
+  global:
+  - GH_REF: github.com/mathieuruellan/cargo-talk.git
+before_install:
+- openssl aes-256-cbc -K $encrypted_dfec1ca9555d_key -iv $encrypted_dfec1ca9555d_iv
+  -in github_deploy_key.enc -out github_deploy_key -d
+- eval "$(ssh-agent -s)"
+- chmod 600 github_deploy_key
+- ssh-add github_deploy_key
+- cat github_deploy_key

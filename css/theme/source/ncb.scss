@@ -1,0 +1,68 @@
+/**
+ * Sky theme for reveal.js.
+ *
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+
+// Include theme-specific fonts
+//@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
+//@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+@import url(https://fonts.googleapis.com/css?family=Dosis);
+
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Dosis', sans-serif;
+$mainColor: #333;
+$headingFont: 'Dosis', sans-serif;
+$headingColor: #333;
+$headingLetterSpacing: 0.00em;
+$headingTextShadow: none;
+$backgroundColor: #f7fbfc;
+$linkColor: #3b759e;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: #134674;
+$headingFontWeight: bold;
+
+
+$heading1Size: 2.0em;
+$heading2Size: 1.5em;
+$heading3Size: 1.2em;
+$heading4Size: 1.00em;
+
+
+// Fix links so they are not cut off
+.reveal a {
+	line-height: 1.3em;
+}
+
+.lighttext, .lighttext h1, .lighttext h2, .lighttext h3, .lighttext h4{
+  color: #FCFCFC !important;
+}
+
+.ncblogo {
+  zoom: 200%;
+}
+
+// Background generator
+@mixin bodyBackground() {
+	@include radial-gradient( #add9e4, #f7fbfc );
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.reveal section img {
+  border: 0px;
+  box-shadow: none;
+}
+
+
