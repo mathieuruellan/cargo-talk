@@ -3,8 +3,14 @@ node_js:
 - 0.1
 before_script:
 - npm install -g grunt-cli
-script: bash ./deploy.sh
+script: bash -xve ./deploy.sh
 env:
   global:
   - GH_REF: github.com/mathieuruellan/cargo-talk.git
-  - secure: vkE9zdUlVkQSikGFxMCgFX9wHR/lwsOtBTOAXCOFqhl89RvA4sAgJhWSQhb37SZ+YwDuieEoGDWk/Q4spdo2lvxOc5KRb6LngERA3YG053k24+5DcxiLRS2oTNPN9iQ3tGe13medVEAcTSnmy01jj2oa2lh/nMGUd9PNQdlyxSbp1r34DeROnuBwZGrYjNZexGsWacuH4yoU3FsRFaVSqMUEYZSwaHdMXnoyWi1VSSlWpokZ9uhCTEAVXLG4a1eopcl8M3Oum1mYtCOPQTR3aeIpDU4qXCXUhCyZ9r1LNCXxadxbh1b4zQDCtOjVbl4de28BRxjA1nx8adOgfwxxf9Nm0wxjp1RJlcodcpZzKlORNPcBmWiy8WF0AeH1CmgWEoLzy0DALd4yPJKGdKVeuE1EpojEUjRlxgx27xPsMRChco112CKWQnEuNKt77fbkq7LgdvUyc6WsTUZP13sRqfty2lSpybZdbQMwGRrp5Zh0iKk7y9W5IiQMV9ZZvAhwy/VOCVjDBbqZCXzc2uBiuLTRos4+V380QgTfN5GZfTrd4XZC7TEPQan1v3JwJ4Fw98arCX6RtBh8vXpDy5Jr6/PliFwDGSdkPffQVGih/nnF9v7fQxM5y8tWwQvWAbOY7uKzJr1x4ZLPKAx9gF7KKV/dW4MdcNGwvI7B2tz2Sjk=
+before_install:
+- openssl aes-256-cbc -K $encrypted_dfec1ca9555d_key -iv $encrypted_dfec1ca9555d_iv
+  -in github_deploy_key.enc -out github_deploy_key -d
+- eval "$(ssh-agent -s)"
+- chmod 600 github_deploy_key
+- ssh-add github_deploy_key
+- cat github_deploy_key
